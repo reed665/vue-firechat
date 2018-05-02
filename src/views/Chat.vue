@@ -25,8 +25,8 @@
 
 <script>
 import ChatInput from '@/components/ChatInput.vue'
-
 import db from '@/firebase'
+import formatDate from 'date-fns/format'
 
 export default {
   components: { ChatInput },
@@ -45,7 +45,9 @@ export default {
         const { name, content, timestamp } = doc.data()
         messages.push({
           id: doc.id,
-          name, content, timestamp
+          name,
+          content,
+          timestamp: formatDate(timestamp, 'MMM D, YYYY HH:mm A'),
         })
       })
     })
@@ -65,5 +67,6 @@ h2 {
 }
 .message-time {
   display: block;
+  font-size: .8em;
 }
 </style>
