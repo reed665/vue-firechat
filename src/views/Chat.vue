@@ -38,9 +38,6 @@ h2 {
 .message span {
   font-size: 1.4em;
 }
-.message-text {
-  
-}
 .message-time {
   display: block;
   font-size: 1.2em;
