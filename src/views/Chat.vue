@@ -1,19 +1,12 @@
 <template>
   <div class="container">
     <h2>Chat</h2>
+    <p>{{ name }}</p>
   </div>
 </template>
 
 <script>
 export default {
-  data () {
-    return {
-
-    }
-  }
+  props: ['name'],
 }
 </script>
-
-<style scoped>
-
-</style>

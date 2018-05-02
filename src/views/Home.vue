@@ -3,9 +3,10 @@
     <div class="card">
       <div class="card-content center-align">
         <h2 class="teal-text">Welcome</h2>
-        <form @submit.prevent="enterChat">
+        <form @submit.prevent="enterChat" novalidate>
           <label for="name">Enter your name</label>
-          <input type="text" name="name" v-model="name">
+          <input type="text" name="name" v-model="name" required>
+          <p v-if="feedback" class="red-text">{{ feedback }}</p>
           <button class="btn teal">Enter Chat</button>
         </form>
       </div>
@@ -17,12 +18,17 @@
 export default {
   data () {
     return {
-      name: null,
+      name: '',
+      feedback: '',
     }
   },
   methods: {
     enterChat () {
-      console.log(this.name)
+      if (!this.name) {
+        this.feedback = 'You must enter a name to join'
+        return
+      }
+      this.$router.push({ name: 'chat', params: { name: this.name } })
     }
   }
 }
