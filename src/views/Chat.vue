@@ -16,7 +16,7 @@
       </div>
 
       <div class="card-action">
-        <input type="text">
+        <chat-input :name="name" />
       </div>
     </div>
   </div>
@@ -24,7 +24,10 @@
 
 
 <script>
+import ChatInput from '@/components/ChatInput.vue'
+
 export default {
+  components: { ChatInput },
   props: ['name'],
 }
 </script>
