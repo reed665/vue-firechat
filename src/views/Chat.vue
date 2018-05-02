@@ -4,7 +4,7 @@
 
     <div class="card">
       <div class="card-content">
-        <ul class="message-list">
+        <ul class="message-list" v-chat-scroll>
           <li class="message" v-for="msg of messages" :key="msg.id">
             <span class="message-name teal-text">{{ msg.name }}</span>
             <span class="message-content grey-text text-darken-3">

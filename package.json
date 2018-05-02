@@ -10,6 +10,7 @@
     "date-fns": "^1.29.0",
     "firebase": "^4.13.1",
     "vue": "^2.5.16",
+    "vue-chat-scroll": "^1.2.1",
     "vue-router": "^3.0.1"
   },
   "devDependencies": {
