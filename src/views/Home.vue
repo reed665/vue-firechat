@@ -36,6 +36,9 @@ export default {
   h2 {
     font-size: 3em;
   }
+  label {
+    font-size: 1.2em;
+  }
   button {
     margin-top: 30px;
     margin-bottom: 30px;
