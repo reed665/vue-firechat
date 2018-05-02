@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="home container">
     <div class="card">
       <div class="card-content center-align">
         <h2 class="teal-text">Welcome</h2>
@@ -35,7 +35,7 @@ export default {
 </script>
 
 <style scoped>
-  .container {
+  .home {
     margin-top: 100px;
     max-width: 400px;
   }
