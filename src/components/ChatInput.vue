@@ -33,10 +33,8 @@ export default {
         timestamp: Date.now()
       }
       db.collection('messages').add(doc)
-        .then(() => {
-          this.newMessage = ''
-        })
         .catch(console.error)
+      this.newMessage = ''
     }
   }
 }

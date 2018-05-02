@@ -5,12 +5,12 @@
     <div class="card">
       <div class="card-content">
         <ul class="message-list">
-          <li class="message">
-            <span class="teal-text">Name</span>
-            <span class="grey-text text-darken-3">
-              {{ 'message' }}
+          <li class="message" v-for="msg of messages" :key="msg.id">
+            <span class="message-name teal-text">{{ msg.name }}</span>
+            <span class="message-content grey-text text-darken-3">
+              {{ msg.content }}
             </span>
-            <span class="grey-text message-time">time</span>
+            <span class="grey-text message-time">{{ msg.timestamp }}</span>
           </li>
         </ul>
       </div>
@@ -26,9 +26,30 @@
 <script>
 import ChatInput from '@/components/ChatInput.vue'
 
+import db from '@/firebase'
+
 export default {
   components: { ChatInput },
   props: ['name'],
+  data () {
+    return {
+      messages: [],
+    }
+  },
+  created () {
+    const msgsCollection = db.collection('messages').orderBy('timestamp')
+    const messages = this.messages
+    msgsCollection.onSnapshot(snapshot => {
+      snapshot.docChanges.forEach(({ type, doc }) => {
+        if (type !== 'added') return
+        const { name, content, timestamp } = doc.data()
+        messages.push({
+          id: doc.id,
+          name, content, timestamp
+        })
+      })
+    })
+  }
 }
 </script>
 
@@ -38,11 +59,11 @@ h2 {
   font-size: 2.5em;
   margin-bottom: 40px;
 }
-.message span {
+.message-name,
+.message-content {
   font-size: 1.4em;
 }
 .message-time {
   display: block;
-  font-size: 1.2em;
 }
 </style>
